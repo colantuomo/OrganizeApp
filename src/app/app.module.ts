@@ -6,25 +6,35 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SecondPage } from "../pages/second/second";
+import { UserProvider } from '../providers/user/user';
+import { HttpModule } from "@angular/http";
+import { ModalCadMateriasPage } from "../pages/modal-cad-materias/modal-cad-materias";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SecondPage,
+    ModalCadMateriasPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SecondPage,
+    ModalCadMateriasPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}

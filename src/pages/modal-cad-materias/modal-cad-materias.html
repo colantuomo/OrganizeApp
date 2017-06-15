@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons start>
+      <button ion-button icon-only  (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Matérias cadastradas {{materiasOption.length}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let mat of materiasOption">
+      <ion-item>
+        {{mat.nome}}
+      </ion-item>
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="deleteItem(mat)">Excluir</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="cadMaterias()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

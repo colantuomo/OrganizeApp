@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons start>
+      <button ion-button icon-only  (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>Qual sua pendencia hoje?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <!--<ion-item>
+      <ion-label stacked>Materia</ion-label>
+      <ion-input [(ngModel)]="materia" type="text" required="true"></ion-input>
+    </ion-item>-->
+    <ion-item>
+      <ion-label stacked>Matérias</ion-label>
+      <ion-select [(ngModel)]="materiaSelect" interface="action-sheet">
+        <ion-option *ngFor="let option of materiasOption">{{option.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Tarefa</ion-label>
+      <ion-input [(ngModel)]="pendencia" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de Entrega</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="dtEntrega"></ion-datetime>
+    </ion-item>
+
+  </ion-list>
+  <button color="danger" ion-button block click (click)="addRecipe()">
+    <ion-icon name="add">
+    </ion-icon>
+  </button>
+</ion-content>
