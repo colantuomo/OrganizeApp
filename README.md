@@ -1,1 +1,1 @@
-Projeto foi para estudar Angular2+ionic+NodeJS
+### Projeto feito para estudar Angular2+ionic+NodeJS
