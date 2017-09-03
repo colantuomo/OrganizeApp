@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="danger">
     <ion-buttons start>
-      <button ion-button icon-only  (click)="closeModal()">
+      <button ion-button icon-only (click)="closeModal()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -23,7 +23,11 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab right bottom>
+  <ion-fab *ngIf="materiasOption.length > 0" right bottom>
+    <button ion-fab color="danger" (click)="cadMaterias()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab *ngIf="materiasOption.length == 0" center middle>
     <button ion-fab color="danger" (click)="cadMaterias()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
