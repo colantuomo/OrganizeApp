@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Events, AlertController } from 'ionic-angular';
 import { UserProvider } from "../../providers/user/user";
 
 /**
@@ -23,7 +23,7 @@ export class SecondPage {
   materiasOption: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
-    public events: Events, public userService: UserProvider) {
+    public events: Events, public userService: UserProvider, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -32,18 +32,27 @@ export class SecondPage {
   }
 
   addRecipe() {
-    let dtHoje = new Date();
-    let data = {
-      materia: this.materiaSelect,
-      pendencia: this.pendencia,
-      dtEntrega: this.dtEntrega,
-      dtHoje: dtHoje
-    };
+    if(this.isValid()){
+      let dtHoje = new Date();
+      let data = {
+        materia: this.materiaSelect,
+        pendencia: this.pendencia,
+        dtEntrega: this.dtEntrega,
+        dtHoje: dtHoje
+      };
 
-    let dtEntr = this.dtEntrega;
-    this.events.publish('recipe:added', dtEntr);
-    this.userService.insertData(data);
-    this.viewCtrl.dismiss();
+      let dtEntr = this.dtEntrega;
+      this.events.publish('recipe:added', dtEntr);
+      this.userService.insertData(data);
+      this.viewCtrl.dismiss();
+    }else{
+      let alert = this.alertCtrl.create({
+      title: 'Hey!',
+      subTitle: 'Você esqueceu de preencher algum campo',
+      buttons: ['OK']
+    });
+    alert.present();
+    }
   }
 
   closeModal() {
@@ -59,5 +68,16 @@ export class SecondPage {
 
   loadSemNode() {
     this.materiasOption = this.userService.getMateriasData();
+  }
+
+  isValid(){
+    let matSelect = typeof this.materiaSelect != 'undefined';
+    let pend = typeof this.pendencia != 'undefined';
+    let datePend = typeof this.dtEntrega != 'undefined';
+
+    if(matSelect && pend && datePend)
+      return true
+
+    return false
   }
 }

@@ -36,7 +36,7 @@ export class ModalCadMateriasPage {
   cadMaterias() {
     let prompt = this.alertCtrl.create({
       title: 'Nova matéria',
-      message: "Adicione abaixo o nome para cadastrar suas futuras pendências",
+      message: "Adicione abaixo a matéria para cadastrar suas futuras pendências",
       inputs: [
         {
           name: 'nome',
@@ -53,8 +53,19 @@ export class ModalCadMateriasPage {
         {
           text: 'Salvar',
           handler: data => {
-            console.log(data);
-            this.insertMateriasItem(data);
+            console.log(data.name);
+            if (typeof data.name != 'undefined') {
+              this.insertMateriasItem(data);
+            }
+            else {
+              let alert = this.alertCtrl.create({
+                title: 'Hey!',
+                subTitle: 'O campo deve ser preenchido',
+                buttons: ['OK']
+              });
+              alert.present();
+            }
+
           }
         }
       ]
@@ -70,7 +81,7 @@ export class ModalCadMateriasPage {
     );
   }
 
-  loadSemNode(){
+  loadSemNode() {
     this.materiasOption = this.userService.getMateriasData();
   }
 
