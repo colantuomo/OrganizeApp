@@ -46,12 +46,7 @@ export class SecondPage {
       this.userService.insertData(data);
       this.viewCtrl.dismiss();
     }else{
-      let alert = this.alertCtrl.create({
-      title: 'Hey!',
-      subTitle: 'Você esqueceu de preencher algum campo',
-      buttons: ['OK']
-    });
-    alert.present();
+      this.notValidMessage();
     }
   }
 
@@ -79,5 +74,14 @@ export class SecondPage {
       return true
 
     return false
+  }
+
+  notValidMessage() {
+    let alert = this.alertCtrl.create({
+      title: 'Hey!',
+      subTitle: 'Você esqueceu de preencher algum campo',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

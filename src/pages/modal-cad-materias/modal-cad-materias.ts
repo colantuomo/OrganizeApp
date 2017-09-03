@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { UserProvider } from "../../providers/user/user";
 
-/**
- * Generated class for the ModalCadMateriasPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-modal-cad-materias',
@@ -53,14 +48,13 @@ export class ModalCadMateriasPage {
         {
           text: 'Salvar',
           handler: data => {
-            console.log(data.name);
-            if (typeof data.name != 'undefined') {
+            if (data.nome != '') {
               this.insertMateriasItem(data);
             }
             else {
               let alert = this.alertCtrl.create({
                 title: 'Hey!',
-                subTitle: 'O campo deve ser preenchido',
+                subTitle: 'Preencha o nome da matéria',
                 buttons: ['OK']
               });
               alert.present();
