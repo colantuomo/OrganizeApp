@@ -10,6 +10,7 @@ import { SecondPage } from "../pages/second/second";
 import { UserProvider } from '../providers/user/user';
 import { HttpModule } from "@angular/http";
 import { ModalCadMateriasPage } from "../pages/modal-cad-materias/modal-cad-materias";
+import { IonicStorageModule } from '@ionic/storage'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,11 @@ import { ModalCadMateriasPage } from "../pages/modal-cad-materias/modal-cad-mate
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot({
+      name: '__MyApp',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }) //<-add this
   ],
   bootstrap: [IonicApp],
   entryComponents: [

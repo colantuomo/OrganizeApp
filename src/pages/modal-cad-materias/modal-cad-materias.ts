@@ -69,14 +69,15 @@ export class ModalCadMateriasPage {
 
   loadMateriasItens() {
     console.log("LOAD ITENS");
-    this.userService.getMateriasData().subscribe(
+    this.userService.getStorageData().subscribe(
       data => this.materiasOption = data,
       err => console.log(err),
     );
   }
 
   loadSemNode() {
-    this.materiasOption = this.userService.getMateriasData();
+    this.materiasOption = this.userService.getStorageData();
+    console.log('SEMNODE: '+this.materiasOption);
   }
 
   insertMateriasItem(materias: string) {

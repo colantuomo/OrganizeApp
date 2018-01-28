@@ -55,14 +55,14 @@ export class SecondPage {
   }
 
   loadMateriasItens() {
-    this.userService.getMateriasData().subscribe(
+    this.userService.getStorageData().subscribe(
       data => this.materiasOption = data,
       err => console.log(err),
     );
   }
 
   loadSemNode() {
-    this.materiasOption = this.userService.getMateriasData();
+    this.materiasOption = this.userService.getStorageData();
   }
 
   isValid(){

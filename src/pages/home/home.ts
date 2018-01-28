@@ -34,6 +34,7 @@ export class HomePage {
     //   data => this.pendencia = data,
     //   err => console.log(err),
     // );
+    this.userService.getMateriasData();
     this.pendencia = this.userService.getData();
     console.log(this.dtPendencia);
   }

@@ -5,7 +5,7 @@
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Matérias cadastradas {{materiasOption.length}}</ion-title>
+    <ion-title>Matérias cadastradas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,11 +23,11 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab *ngIf="materiasOption.length > 0" right bottom>
+  <ion-fab  right bottom>
     <button ion-fab color="danger" (click)="cadMaterias()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
-  <ion-fab *ngIf="materiasOption.length == 0" center middle>
+  <ion-fab  center middle>
     <button ion-fab color="danger" (click)="cadMaterias()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
