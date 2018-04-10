@@ -1,4 +1,4 @@
-# OrganizeApp | Idéia
+# OrganizeApp
 Aplicativo para cadastrar as suas pendências, de modo que você consiga organizar as suas tarefas diárias.
 
 # Tecnologias
